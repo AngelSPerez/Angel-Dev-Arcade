@@ -88,22 +88,40 @@
     cursor: pointer;
     border-radius: 6px;
     border: none;
-    background: #0f0;
-    color: #000;
+    background: rgb(0, 81, 255);
+    color: #ffffff;
+  }
+
+  #gameOver a {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(221, 10, 38, 0.644);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  #finalMsg {
+    z-index: 999;
+    margin-top: 80px;
   }
 </style>
 </head>
 <body>
 <h2>Breakout</h2>
 <div id="hud">
-  Puntos: <span id="score">0</span> | Tiempo: <span id="timer">60</span>s
+  Score: <span id="score">0</span> | Time: <span id="timer">60</span>s
 </div>
 <div id="game">
   <div id="paddle"></div>
   <div id="ball"></div>
   <div id="gameOver">
     <p id="finalMsg"></p>
-    <button onclick="restartGame()">Reiniciar</button>
+    <button onclick="restartGame()">Restart</button>
+    <a href="../index.html">Back</a>
   </div>
 </div>
 
@@ -177,7 +195,7 @@ function startGame() {
 function endGame(msg) {
   gameRunning = false;
   clearInterval(timerInterval);
-  finalMsg.textContent = msg + " | Puntos: " + score;
+  finalMsg.textContent = msg + " | Score: " + score;
   gameOverScreen.style.display = "flex";
 }
 
@@ -216,7 +234,7 @@ function gameLoop() {
 
   // Perder si la bola cae
   if (ballY >= 380) {
-    endGame("💀 ¡Perdiste!");
+    endGame("Game Over");
     return;
   }
 

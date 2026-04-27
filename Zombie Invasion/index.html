@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <title>Zombie Defense</title>
 <style>
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+  }
 
     /* Scroll minimalista */
   ::-webkit-scrollbar {
@@ -94,13 +102,13 @@
 <div id="game">
   <div id="brain"><img src="brain.png" alt="cerebro" width="120px" height="120px"></div>
   <div id="hud">
-    <div>Tiempo: <span id="timer">60</span></div>
+    <div>Time: <span id="timer">60</span></div>
     <div>Score: <span id="score">0</span></div>
   </div>
   <div id="message">
     <div id="messageText"></div>
-    <button id="retryBtn">Reintentar</button>
-    <button id="backBtn">Regresar</button>
+    <button id="retryBtn">Try again</button>
+    <button id="backBtn">Back to home</button>
   </div>
 </div>
 
@@ -257,7 +265,7 @@ function endGame(win) {
   gameOver = true;
   brain.style.display = "none";
   message.style.display = "block";
-  messageText.textContent = win ? "¡Ganaste! 🎉" : "¡Perdiste! 🧟";
+  messageText.textContent = win ? "¡You Win!" : "Game Over"
   retryBtn.style.display = "inline-block";
   backBtn.style.display = "inline-block";
 }
